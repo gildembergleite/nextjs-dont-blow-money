@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import logo from '../../../public/images/logo.svg'
-import { Button } from '../ui/button'
+import { NewTransactionDialog } from './new-transaction-dialog'
 
 export default function Header() {
   return (
@@ -15,9 +15,7 @@ export default function Header() {
           </Link>
         </div>
         <div className='flex'>
-          <Button variant={'default'} className='text-white rounded-[6px]'>
-            Nova transação
-          </Button>
+          <NewTransactionDialog />
         </div>
       </div>
     </header>

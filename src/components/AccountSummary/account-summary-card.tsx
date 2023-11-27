@@ -1,11 +1,11 @@
 import { Card, CardContent, CardHeader } from '../ui/card'
+import { StaticImport } from 'next/dist/shared/lib/get-img-props'
+import formatCurrency from '@/lib/utils/format-currency'
 
+import Image from 'next/image'
 import arrowUp from '../../../public/icons/arrow-up.svg'
 import arrowDown from '../../../public/icons/arrow-down.svg'
 import dollarSign from '../../../public/icons/dollar-sign.svg'
-import Image from 'next/image'
-import { StaticImport } from 'next/dist/shared/lib/get-img-props'
-import formatCurrency from '@/lib/utils/format-currency'
 
 interface AccountSummaryCardProps {
   type: 'income' | 'expense' | 'total'
