@@ -15,7 +15,7 @@ export default function Header() {
           </Link>
         </div>
         <div className='flex'>
-          <Button variant={'default'} size={'lg'} className='text-white'>
+          <Button variant={'default'} className='text-white rounded-[6px]'>
             Nova transação
           </Button>
         </div>
