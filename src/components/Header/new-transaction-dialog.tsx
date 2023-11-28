@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import ArrowUpIcon from '../Icons/arrow-up'
+import ArrowDownIcon from '../Icons/arrow-down'
 
 export function NewTransactionDialog() {
   return (
@@ -47,11 +48,19 @@ export function NewTransactionDialog() {
         </div>
         <div className='flex w-full px-6 gap-4 mt-2'>
           <Button
-            className='w-full h-full py-4 rounded-[6px] gap-2 bg-background focus:bg-primary'
+            className='w-full h-full py-4 rounded-[6px] gap-2 bg-background text-primary hover:text-primary focus:text-white focus:bg-primary'
             variant={'ghost'}
           >
             <div className='w-6 h-6'><ArrowUpIcon /></div>
-            Entrada
+            <span className='text-white'>Entrada</span>
+          </Button>
+
+          <Button
+            className='w-full h-full py-4 rounded-[6px] gap-2 bg-background text-destructive hover:text-destructive focus:text-white focus:bg-destructive'
+            variant={'ghost'}
+          >
+            <div className='w-6 h-6'><ArrowDownIcon /></div>
+            <span className='text-white'>Saída</span>
           </Button>
         </div>
         <DialogFooter className='px-6 py-2 my-6'>

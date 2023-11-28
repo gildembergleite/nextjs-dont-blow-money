@@ -1,11 +1,9 @@
+import { ReactNode } from 'react'
 import { Card, CardContent, CardHeader } from '../ui/card'
-import { StaticImport } from 'next/dist/shared/lib/get-img-props'
+import ArrowUpIcon from '../Icons/arrow-up'
+import ArrowDownIcon from '../Icons/arrow-down'
+import DollarSignIcon from '../Icons/dollar-sign'
 import formatCurrency from '@/lib/utils/format-currency'
-
-import Image from 'next/image'
-import arrowUp from '../../../public/icons/arrow-up.svg'
-import arrowDown from '../../../public/icons/arrow-down.svg'
-import dollarSign from '../../../public/icons/dollar-sign.svg'
 
 interface AccountSummaryCardProps {
   type: 'income' | 'expense' | 'total'
@@ -17,20 +15,24 @@ export default function AccountSummaryCard({ type, value }: AccountSummaryCardPr
   const backgroundColor = type === 'total' && 'bg-primary'
 
   let title: string
-  let icon: StaticImport
+  let icon: ReactNode
+  let color: string
 
   switch (type) {
   case 'income': 
     title = 'Entrada'
-    icon = arrowUp
+    color = 'text-primary'
+    icon = <ArrowUpIcon />
     break
   case 'expense':
     title = 'Saída'
-    icon = arrowDown
+    color = 'text-destructive'
+    icon = <ArrowDownIcon />
     break
   case 'total':
     title = 'Total'
-    icon = dollarSign
+    color = 'text-white'
+    icon = <DollarSignIcon />
     break
   }
   
@@ -41,7 +43,9 @@ export default function AccountSummaryCard({ type, value }: AccountSummaryCardPr
           <h2 className='text-white/80'>
             {title}
           </h2>
-          <Image src={icon} alt='' />
+          <div className={`${color} w-8 h-8`}>
+            {icon}
+          </div>
         </div>
       </CardHeader>
       <CardContent>
