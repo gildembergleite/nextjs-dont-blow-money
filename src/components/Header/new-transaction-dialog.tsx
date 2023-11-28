@@ -9,10 +9,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
-import Image from 'next/image'
-
-import arrowUp from '../../../public/icons/arrow-up.svg'
-import arrowDown from '../../../public/icons/arrow-down.svg'
+import ArrowUpIcon from '../Icons/arrow-up'
 
 export function NewTransactionDialog() {
   return (
@@ -33,32 +30,28 @@ export function NewTransactionDialog() {
         </DialogHeader>
         <div className="space-y-4 px-6">
           <Input
-            className="py-6 rounded-[6px]"
+            type='text'
             placeholder='Descrição'
             id="description"
-            value=""
           />
           <Input
-            className="py-6 rounded-[6px]"
+            type='text'
             placeholder='Preço'
             id="price"
-            value=""
           />
           <Input
-            className="py-6 rounded-[6px]"
+            type='text'
             placeholder='Categoria'
             id="category"
-            value=""
           />
         </div>
         <div className='flex w-full px-6 gap-4 mt-2'>
-          <Button variant={'secondary'} className='w-full h-full py-4 rounded-[6px]'>
-            <Image src={arrowUp} alt='' />
+          <Button
+            className='w-full h-full py-4 rounded-[6px] gap-2 bg-background focus:bg-primary'
+            variant={'ghost'}
+          >
+            <div className='w-6 h-6'><ArrowUpIcon /></div>
             Entrada
-          </Button>
-          <Button variant={'secondary'} className='w-full h-full py-4 rounded-[6px]'>
-            <Image src={arrowDown} alt='' />
-            Saída
           </Button>
         </div>
         <DialogFooter className='px-6 py-2 my-6'>
