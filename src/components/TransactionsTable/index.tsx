@@ -1,4 +1,4 @@
-import { useTransactions } from '../hooks/useTransactions'
+import { useTransactions } from '../../hooks/useTransactions'
 import SearchTransaction from './search-transaction'
 import TableContent from './table-content'
 import TableFooter from './table-footer'
