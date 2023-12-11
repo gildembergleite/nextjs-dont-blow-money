@@ -64,7 +64,7 @@ export default function TransactionsProvider({ children }: {
   })
 
   const initialContent = {
-    transactions: [],
+    transactions,
     table
   }
 
