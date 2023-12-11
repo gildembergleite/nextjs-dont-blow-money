@@ -1,5 +1,3 @@
-'use client'
-
 import { useTransactions } from '@/hooks/useTransactions'
 import AccountSummaryCard from './account-summary-card'
 
