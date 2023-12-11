@@ -55,10 +55,17 @@ export default function TableContent({ table }: TableContentProps) {
                       `}
                       key={cell.id}
                     >
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
+                      <div className={cell.column.id === 'amount' ? 'flex justify-center gap-1' : ''}>
+                        {
+                          row.original.type === 'outcome'
+                          && cell.column.id === 'amount'
+                          && '-'
+                        }
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </div>
                     </TableCell>
                   )
                 })}
