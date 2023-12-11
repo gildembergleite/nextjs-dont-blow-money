@@ -1,9 +1,18 @@
 {
   "transactions": [
     {
+      "id": "m5xr84i9",
+      "description": "Salário",
+      "amount": 5000,
+      "type": "income",
+      "category": "Receitas",
+      "date": "2023-11-20T00:00:00.000Z"
+    },
+    {
       "id": "m5gr84i9",
       "description": "Compra no supermercado",
       "amount": 200,
+      "type": "outcome",
       "category": "Alimentação",
       "date": "2023-11-20T00:00:00.000Z"
     },
@@ -12,6 +21,7 @@
       "description": "Investimento em ações",
       "amount": 100,
       "category": "Investimentos",
+      "type": "outcome",
       "date": "2023-11-30T00:00:00.000Z"
     },
     {
@@ -19,6 +29,7 @@
       "description": "Reparos no carro",
       "amount": 300,
       "category": "Automóvel",
+      "type": "outcome",
       "date": "2023-11-10T00:00:00.000Z"
     },
     {
@@ -26,6 +37,7 @@
       "description": "Pagamento da conta de luz",
       "amount": 80,
       "category": "Contas",
+      "type": "outcome",
       "date": "2023-11-05T00:00:00.000Z"
     },
     {
@@ -33,6 +45,7 @@
       "description": "Jantar em restaurante",
       "amount": 50,
       "category": "Alimentação",
+      "type": "outcome",
       "date": "2023-11-15T00:00:00.000Z"
     }
   ]
