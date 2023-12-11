@@ -48,11 +48,11 @@ export default function TableContent({ table }: TableContentProps) {
                   console.log(cell)
                   return (
                     <TableCell
-                      className={
-                        cell.column.id === 'description' || cell.column.id === 'select'
-                          ? 'text-left'
-                          : 'text-center'
-                      }
+                      className={`
+                        ${cell.column.id === 'description' || cell.column.id === 'select' ? 'text-left' : 'text-center'}
+                        ${cell.column.id === 'amount' && cell.row.original.type === 'income' && 'text-primary'}
+                        ${cell.column.id === 'amount' && cell.row.original.type === 'outcome' && 'text-destructive'}
+                      `}
                       key={cell.id}
                     >
                       {flexRender(
