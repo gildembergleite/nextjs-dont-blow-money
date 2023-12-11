@@ -15,19 +15,31 @@ import {
 import TableFooter from './table-footer'
 import SearchTransaction from './search-transaction'
 
-import { data } from '@/lib/utils/mock'
 import { columns } from './table-columns'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TableContent from './table-content'
+import fetchData from '@/lib/utils/fetch-data'
+import { Transaction } from '@/@types/transaction'
 
 export function TransactionsTable() {
+  const [transactions, setTransactions] = useState<Transaction[]>([])
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = useState({})
 
+  useEffect(() => {
+    loadTransactions()
+  }, [])
+
+  async function loadTransactions() {
+    const data = await fetchData()
+    setTransactions(data)
+  }
+
+
   const table = useReactTable({
-    data,
+    data: transactions,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
