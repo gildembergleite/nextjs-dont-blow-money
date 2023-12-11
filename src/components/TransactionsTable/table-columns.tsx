@@ -71,6 +71,6 @@ export const columns: ColumnDef<Transaction>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div>{formatDate(row.getValue('date'))}</div>,
+    cell: ({ row }) => <div>{formatDate(new Date(row.getValue('date')))}</div>,
   },
 ]
