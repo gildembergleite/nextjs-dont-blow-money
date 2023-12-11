@@ -2,9 +2,9 @@ import { Transaction } from '@/@types/transaction'
 import { formatDate } from '@/lib/utils/format-date'
 import { Checkbox } from '@/components/ui/checkbox'
 import { ColumnDef } from '@tanstack/react-table'
-import formatCurrency from '@/lib/utils/format-currency'
 import { Button } from '../ui/button'
 import { ArrowUpDown } from 'lucide-react'
+import formatCurrency from '@/lib/utils/format-currency'
 
 export const columns: ColumnDef<Transaction>[] = [
   {
