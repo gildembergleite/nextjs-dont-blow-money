@@ -6,7 +6,7 @@ import DollarSignIcon from '../Icons/dollar-sign'
 import formatCurrency from '@/lib/utils/format-currency'
 
 interface AccountSummaryCardProps {
-  type: 'income' | 'expense' | 'total'
+  type: 'income' | 'outcome' | 'total'
   value: number
 }
 
@@ -24,7 +24,7 @@ export default function AccountSummaryCard({ type, value }: AccountSummaryCardPr
     color = 'text-primary'
     icon = <ArrowUpIcon />
     break
-  case 'expense':
+  case 'outcome':
     title = 'Saída'
     color = 'text-destructive'
     icon = <ArrowDownIcon />
