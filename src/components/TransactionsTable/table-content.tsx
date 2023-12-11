@@ -44,14 +44,24 @@ export default function TableContent({ table }: TableContentProps) {
                 key={row.id}
                 data-state={row.getIsSelected() && 'selected'}
               >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(
-                      cell.column.columnDef.cell,
-                      cell.getContext()
-                    )}
-                  </TableCell>
-                ))}
+                {row.getVisibleCells().map((cell) => {
+                  console.log(cell)
+                  return (
+                    <TableCell
+                      className={
+                        cell.column.id === 'description' || cell.column.id === 'select'
+                          ? 'text-left'
+                          : 'text-center'
+                      }
+                      key={cell.id}
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </TableCell>
+                  )
+                })}
               </TableRow>
             ))
           ) : (

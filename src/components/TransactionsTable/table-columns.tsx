@@ -31,7 +31,15 @@ export const columns: ColumnDef<Transaction>[] = [
   },
   {
     accessorKey: 'description',
-    header: 'Descrição',
+    header: ({ column }) => (
+      <Button
+        className='gap-2 w-full justify-start pl-0'
+        variant='ghost'
+        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+      >
+        Descrição <ArrowUpDown size={16} />
+      </Button>
+    ),
     cell: ({ row }) => (
       <div className="capitalize">{row.getValue('description')}</div>
     ),
@@ -41,7 +49,7 @@ export const columns: ColumnDef<Transaction>[] = [
     header: ({ column }) => {
       return (
         <Button
-          className='gap-2'
+          className='gap-2 w-full'
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
@@ -53,7 +61,15 @@ export const columns: ColumnDef<Transaction>[] = [
   },
   {
     accessorKey: 'category',
-    header: 'Categoria',
+    header: ({ column }) => (
+      <Button
+        className='gap-2 w-full'
+        variant='ghost'
+        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+      >
+        Categoria <ArrowUpDown size={16} />
+      </Button>
+    ),
     cell: ({ row }) => (
       <div className="capitalize">{row.getValue('category')}</div>
     ),
@@ -63,7 +79,7 @@ export const columns: ColumnDef<Transaction>[] = [
     header: ({ column }) => {
       return (
         <Button
-          className='gap-2'
+          className='gap-2 w-full'
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
