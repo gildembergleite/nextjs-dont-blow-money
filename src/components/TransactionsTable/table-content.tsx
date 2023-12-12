@@ -44,31 +44,29 @@ export default function TableContent({ table }: TableContentProps) {
                 key={row.id}
                 data-state={row.getIsSelected() && 'selected'}
               >
-                {row.getVisibleCells().map((cell) => {
-                  console.log(cell)
-                  return (
-                    <TableCell
-                      className={`
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell
+                    className={`
                         ${cell.column.id === 'description' || cell.column.id === 'select' ? 'text-left' : 'text-center'}
                         ${cell.column.id === 'amount' && cell.row.original.type === 'income' && 'text-primary'}
                         ${cell.column.id === 'amount' && cell.row.original.type === 'outcome' && 'text-destructive'}
                       `}
-                      key={cell.id}
-                    >
-                      <div className={cell.column.id === 'amount' ? 'flex justify-center gap-1' : ''}>
-                        {
-                          row.original.type === 'outcome'
+                    key={cell.id}
+                  >
+                    <div className={cell.column.id === 'amount' ? 'flex justify-center gap-1' : ''}>
+                      {
+                        row.original.type === 'outcome'
                           && cell.column.id === 'amount'
                           && '-'
-                        }
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </div>
-                    </TableCell>
-                  )
-                })}
+                      }
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </div>
+                  </TableCell>
+                )
+                )}
               </TableRow>
             ))
           ) : (
