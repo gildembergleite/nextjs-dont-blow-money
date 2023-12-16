@@ -18,6 +18,8 @@ import { Input } from '../ui/input'
 
 import ArrowUpIcon from '../Icons/arrow-up'
 import ArrowDownIcon from '../Icons/arrow-down'
+import { RequestsHandler } from '@/lib/utils/requests-handler'
+import { Transaction } from '@/@types/transaction'
 
 const dialogFormSchema = z.object({
   description: z.string({
@@ -37,15 +39,14 @@ const dialogFormSchema = z.object({
   })
 })
 
-type DialogFormValues = z.infer<typeof dialogFormSchema>
-
 export function DialogForm() {
-  const form = useForm<DialogFormValues>({
+  const form = useForm<Transaction>({
     resolver: zodResolver(dialogFormSchema)
   })
 
-  function onSubmit(data: DialogFormValues) {
-    console.log(data)
+  function onSubmit(data: Transaction) {
+    const request = new RequestsHandler()
+    request.post(data)
   }
 
   return (
