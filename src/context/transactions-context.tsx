@@ -15,8 +15,8 @@ import {
   useReactTable,
 } from '@tanstack/react-table'
 
-import fetchData from '@/lib/utils/fetch-data'
 import { columns } from '../components/TransactionsTable/table-columns'
+import { RequestsHandler } from '@/lib/utils/requests-handler'
 
 interface TransactionsContextTypes {
   table: Table<Transaction>
@@ -39,7 +39,8 @@ export default function TransactionsProvider({ children }: {
   }, [])
 
   async function loadTransactions() {
-    const data = await fetchData()
+    const request = new RequestsHandler()
+    const data = await request.get()
     setTransactions(data)
   }
 
