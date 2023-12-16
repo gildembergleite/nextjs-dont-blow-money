@@ -54,6 +54,14 @@
       "category": "Comida",
       "type": "outcome",
       "id": "Yomd5lC"
+    },
+    {
+      "description": "Teste 2",
+      "amount": 500,
+      "category": "Juros",
+      "type": "income",
+      "date": "2023-12-16T17:13:15.823Z",
+      "id": "s_1yk1g"
     }
   ]
 }

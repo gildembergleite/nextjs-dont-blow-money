@@ -30,7 +30,7 @@ export class RequestsHandler {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify({...body, date: new Date()}),
       })
 
       const data = await response.json()
