@@ -104,7 +104,7 @@ export function DialogForm() {
               <FormControl className='w-full'>
                 <Input
                   type='text'
-                  placeholder='Insira um endereço de email válido...'
+                  placeholder='Selecione uma categoria...'
                   className='w-full'
                   defaultValue={field.value}
                   {...field}
