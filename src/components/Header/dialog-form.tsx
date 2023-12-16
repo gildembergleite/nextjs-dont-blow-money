@@ -50,7 +50,7 @@ export function DialogForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 px-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 px-6 pb-6">
 
         {/* DESCRIPTION FIELD */}
         <FormField
@@ -81,7 +81,7 @@ export function DialogForm() {
             <FormItem className='w-full'>
               <FormControl className='w-full'>
                 <Input
-                  type='number'
+                  type='text'
                   placeholder='Insira um valor...'
                   className='w-full'
                   defaultValue={field.value}
