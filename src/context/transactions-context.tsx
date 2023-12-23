@@ -21,6 +21,7 @@ import { RequestsHandler } from '@/lib/utils/requests-handler'
 interface TransactionsContextTypes {
   table: Table<Transaction>
   transactions: Transaction[]
+  loadTransactions: () => void
 }
 
 export const TransactionsContext = createContext({} as TransactionsContextTypes)
@@ -36,7 +37,7 @@ export default function TransactionsProvider({ children }: {
 
   useEffect(() => {
     loadTransactions()
-  }, [])
+  }, [transactions])
 
   async function loadTransactions() {
     const request = new RequestsHandler()
@@ -66,7 +67,8 @@ export default function TransactionsProvider({ children }: {
 
   const initialContent = {
     transactions,
-    table
+    table,
+    loadTransactions
   }
 
   return (

@@ -20,6 +20,7 @@ import ArrowUpIcon from '../Icons/arrow-up'
 import ArrowDownIcon from '../Icons/arrow-down'
 import { RequestsHandler } from '@/lib/utils/requests-handler'
 import { Transaction } from '@/@types/transaction'
+import { useTransactions } from '@/hooks/useTransactions'
 
 const dialogFormSchema = z.object({
   description: z.string({
@@ -40,13 +41,16 @@ const dialogFormSchema = z.object({
 })
 
 export function DialogForm() {
+  const { loadTransactions } = useTransactions()
+  
   const form = useForm<Transaction>({
     resolver: zodResolver(dialogFormSchema)
   })
 
-  function onSubmit(data: Transaction) {
+  async function onSubmit(data: Transaction) {
     const request = new RequestsHandler()
-    request.post(data)
+    await request.post(data)
+    loadTransactions()
   }
 
   return (
