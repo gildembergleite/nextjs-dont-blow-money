@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export function useGetApi<Type>(url: string) {
-  const [data , setData] = useState<Type[]>([])
+export function useGetApi<Type>(url?: string) {
   const [isLoading , setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<Error>()
   
@@ -9,12 +8,16 @@ export function useGetApi<Type>(url: string) {
     setIsLoading(true)
 
     try {
-      const response = await fetch(url)
+      const queryParams = new URLSearchParams({
+        _sort: 'date',
+        _order: 'desc'
+      }).toString()
+      const response = await fetch(url + '?' + queryParams)
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`)
       } 
-      const data = await response.json()
-      setData(data)
+      const data: Type[] = await response.json()
+      return data
     } catch (err) {
       const error = err as Error
       setError(error)
@@ -27,6 +30,6 @@ export function useGetApi<Type>(url: string) {
     getData()
   }, [])
 
-  return { data , isLoading , error }
+  return { getData , isLoading , error }
 
 }

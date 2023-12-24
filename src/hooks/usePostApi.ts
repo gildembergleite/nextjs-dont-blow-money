@@ -12,7 +12,7 @@ export function usePostApi<Type>(url: string) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({...body, date: new Date()}),
+        body: JSON.stringify({ ...body, date: new Date() }),
       })
 
       const data = await response.json()

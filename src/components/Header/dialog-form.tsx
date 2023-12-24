@@ -42,15 +42,16 @@ const dialogFormSchema = z.object({
 
 export function DialogForm() {
   const { loadTransactions } = useTransactions()
-  const { postData } = usePostApi(process.env.NEXT_PUBLIC_API_URL)
+  const { postData, isLoading } = usePostApi(process.env.NEXT_PUBLIC_API_URL)
   
   const form = useForm<Transaction>({
     resolver: zodResolver(dialogFormSchema)
   })
 
   async function onSubmit(data: Transaction) {
-    postData(data)
+    await postData(data)
     loadTransactions()
+    form.reset({ description: '', amount: 0, category: '', type: 'income'})
   }
 
   return (
@@ -162,10 +163,14 @@ export function DialogForm() {
         />
 
         <Button
+          disabled={isLoading}
           className='w-full py-6 rounded-[6px] text-white font-bold'
           type="submit"
         > 
-          Cadastrar
+          {isLoading
+            ? (<div className='w-4 h-4 border-2 border-t-white rounded-full animate-spin'/>)
+            : ('Cadastrar')
+          }
         </Button>
       </form>
     </Form>

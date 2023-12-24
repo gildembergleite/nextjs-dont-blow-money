@@ -35,14 +35,17 @@ export default function TransactionsProvider({ children }: {
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = useState({})
 
-  const { data } = useGetApi<Transaction>(process.env.NEXT_PUBLIC_API_URL)
+  const { getData } = useGetApi<Transaction>(process.env.NEXT_PUBLIC_API_URL)
 
   useEffect(() => {
     loadTransactions()
-  }, [data])
+  }, [])
 
   async function loadTransactions() {
-    setTransactions(data)
+    const data = await getData()
+    if (data) {
+      setTransactions(data)
+    }
   }
 
   const table = useReactTable({

@@ -3,6 +3,6 @@ export type Transaction = {
   description: string
   amount: number
   type: 'income' | 'outcome'
-  category: 'Venda' | 'Alimentação' | 'Casa' | 'Automóvel' | 'Investimentos'
+  category: string
   date: Date
 }
