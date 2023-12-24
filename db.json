@@ -70,6 +70,14 @@
       "type": "income",
       "date": "2023-12-23T23:23:14.278Z",
       "id": "4iZgaVP"
+    },
+    {
+      "description": "2023",
+      "amount": 123123,
+      "category": "Content",
+      "type": "income",
+      "date": "2023-12-24T00:00:10.303Z",
+      "id": "l1BjAab"
     }
   ]
 }

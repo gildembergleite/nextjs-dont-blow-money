@@ -18,9 +18,9 @@ import { Input } from '../ui/input'
 
 import ArrowUpIcon from '../Icons/arrow-up'
 import ArrowDownIcon from '../Icons/arrow-down'
-import { RequestsHandler } from '@/lib/utils/requests-handler'
 import { Transaction } from '@/@types/transaction'
 import { useTransactions } from '@/hooks/useTransactions'
+import { usePostApi } from '@/hooks/usePostApi'
 
 const dialogFormSchema = z.object({
   description: z.string({
@@ -42,14 +42,14 @@ const dialogFormSchema = z.object({
 
 export function DialogForm() {
   const { loadTransactions } = useTransactions()
+  const { postData } = usePostApi(process.env.NEXT_PUBLIC_API_URL)
   
   const form = useForm<Transaction>({
     resolver: zodResolver(dialogFormSchema)
   })
 
   async function onSubmit(data: Transaction) {
-    const request = new RequestsHandler()
-    await request.post(data)
+    postData(data)
     loadTransactions()
   }
 

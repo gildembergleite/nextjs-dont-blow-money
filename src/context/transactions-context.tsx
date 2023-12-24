@@ -16,7 +16,7 @@ import {
 } from '@tanstack/react-table'
 
 import { columns } from '../components/TransactionsTable/table-columns'
-import { RequestsHandler } from '@/lib/utils/requests-handler'
+import { useGetApi } from '@/hooks/useGetApi'
 
 interface TransactionsContextTypes {
   table: Table<Transaction>
@@ -35,16 +35,15 @@ export default function TransactionsProvider({ children }: {
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = useState({})
 
+  const { data } = useGetApi<Transaction>(process.env.NEXT_PUBLIC_API_URL)
+
   useEffect(() => {
     loadTransactions()
-  }, [transactions])
+  }, [data])
 
   async function loadTransactions() {
-    const request = new RequestsHandler()
-    const data = await request.get()
     setTransactions(data)
   }
-
 
   const table = useReactTable({
     data: transactions,
